@@ -1,0 +1,377 @@
+<!DOCTYPE HTML>
+<!--
+	Hyperspace by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+
+<head>
+	
+	<meta name="description " content="Here you can Practice and Know your Typing speed on Typing test website">
+	<meta name=”keywords” content=”Typing, Typing , Typing Test , Typing practice”>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>practice Typing</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="assets/css/main.css" />
+	<noscript>
+		<link rel="stylesheet" href="assets/css/noscript.css" />
+	</noscript>
+	 <!-- Bootstrap CSS -->
+	 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
+	 integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+	 <style>
+		 #jumbotron {
+     
+      width: 95%;
+	  border: 2px solid black;
+      box-shadow: 5px 10px 8px rgb(26, 26, 31);
+      border-radius: 15px;
+      /* border: 3px solid black; */
+      /* padding: 26px 10px 58px 16px; */
+
+
+    }
+
+	.container-fluid {
+
+font-family: 'Alata', sans-serif;
+width: 100%;
+
+}
+.form-select {
+      display: inline-block;
+      width: 25%;
+    }
+
+#inputfield:focus {
+      border: 3px solid black;
+
+    }
+    .correct {
+      color: rgb(9, 10, 9);
+      text-decoration: underline;
+      transform: scale(1.2);
+      transition-delay: 0.1;
+    }
+
+    .incorrect {
+      color: red;
+      text-decoration: underline;
+
+    }
+
+    .error {
+      color: green;
+    }
+
+    #inputfield {
+      margin: 2px 3px;
+      padding: 25px;
+      background-color: #ecedf3;
+
+
+    }
+	 </style>
+</head>
+
+<body class="is-preload">
+	 <!--  navigation bar -->
+
+	 <nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
+		<div class="container-fluid">
+		  <a class="navbar-brand" href="#"> <i class="far fa-keyboard"></i> Typing test </a>
+		  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+			aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		  </button>
+	
+		</div>
+	  </nav>
+	
+	 
+
+	<!-- Sidebar -->
+
+
+	<!-- Wrapper -->
+	<div id="wrapper">
+
+		<!-- Intro -->
+		<section id="intro" class="wrapper style1 fullscreen fade-up">
+			<div class="inner">
+				<!--jumbotron -->
+				<div class="container-fluid my-4 mx-8 px-8 py-4" id="jumbotron">
+
+					<div class="  container align-items center col-md-4">
+						<label for="inputState" class="form-label ">
+							<h5> Select minutes </h5>
+						</label>
+						<select id="inputminute" class="form-select">
+							<option selected>1</option>
+							<option>3</option>
+							<option>5</option>
+						</select>
+					</div>
+
+
+					<button type="button" class="btn btn-success my-4">
+						Correct character <i class="far fa-check-circle"></i> :<span class="btn btn-dark" id="correct">
+							0 </span>
+					</button>
+					<button type="button"  class="btn btn-primary my-4 " >
+						Accuracy : <i class="far fa-check-circle"></i> :<span class="btn btn-dark" id="wpm_show"> 0
+						</span>
+					</button>
+					<button type="button" class="btn btn-info  my-4">
+						Timer <i class="fas fa-clock"></i> : <span id="time" class="btn btn-dark"> 0 </span> Sec
+					</button>
+
+					<!-- <button type="button" class="btn btn-danger my-4  ">
+						Inncorrect Words <i class="fas fa-times-circle"></i> : <span id="incorrect"
+							class="btn btn-dark"> 0 </span>
+					</button> -->
+
+					<div class="jumbotron jumbotron-fluid">
+						<div class="container" id="contentbg">
+							<h6 class="my-4"> <u>Type the follwing Text :</u></h6>
+							<div>
+								<h3><span id="apitext"> </span></h3>
+
+							</div>
+						</div>
+					</div>
+					<!--input field -->
+					<div class="container-fluid py-4">
+						<div class="input-group">
+
+							<textarea class="form-control" id="inputfield" aria-label="With textarea"
+								placeholder="Click Here to start Typing"></textarea>
+						</div>
+					</div>
+					<button class="btn-primary " id="resultbtn" type="submit " data-bs-toggle="modal"
+						data-bs-target="#staticBackdrop"> View Result</button>
+
+				</div>
+
+			</div>
+		</section>
+		<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+		aria-labelledby="staticBackdropLabel" aria-hidden="true">
+	
+		<div class="modal-dialog modal-dialog-centered">
+		  <div class="modal-content">
+			<div class="modal-header">
+			  <h5 class="modal-title" id="staticBackdropLabel">Your Result </h5>
+			  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+			  <bold>WPM: <span id="wpm">  </span></bold>
+			</div>
+			<div class="modal-body">
+			  <bold>CPM: <span id="cpm"> </span> </bold>
+			</div>
+			<div class="modal-footer">
+			  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+			  <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="reloadpage();">Start
+				Again</button>
+			</div>
+		  </div>
+		</div>
+	  </div>
+
+
+	<!-- Footer -->
+	<footer id="footer" class="wrapper style1-alt">
+		<div class="inner">
+			<ul class="menu">
+				<li>&copy; Untitled. All rights reserved.</li>
+				<li>Design by : <a href="http://ec2-15-206-158-179.ap-south-1.compute.amazonaws.com/">  jitendra Lodhi</a></li>
+				<li> 
+
+					
+					  <a href="https://mailto:jitendralodhi108@gmail.com" target="_blank"><i style="color: rgb(14, 13, 13); font-size: 25px;" class="fas fa-envelope"></i></a>
+			
+			
+				 </li>
+			</ul>
+		</div>
+	</footer>
+
+	<!-- Scripts -->
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/jquery.scrollex.min.js"></script>
+	<script src="assets/js/jquery.scrolly.min.js"></script>
+	<script src="assets/js/browser.min.js"></script>
+	<script src="assets/js/breakpoints.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<script src="assets/js/main.js"></script>
+	
+  <!-- Option 1: Bootstrap Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+    crossorigin="anonymous"></script>
+
+  <!-- Option 2: Separate Popper and Bootstrap JS -->
+  <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
+    -->
+	<script>
+
+
+		// This code is for accesing elements by using get element and api url
+	
+	
+		var api_URL = 'https://api.quotable.io/random/'
+	
+		const displayquote = document.getElementById('apitext')
+		const enteredtext = document.getElementById('inputfield')
+	
+	
+		let total_errors = 0;
+		let errors = 0;
+		let characterTyped = 0;
+		let timeElapsed = 0;
+	
+	
+	
+	
+		//  eventlistener on typing text in input field
+	
+		const input = document.getElementById('inputfield')
+	
+	
+		input.addEventListener('input', () => {
+		  // taking and comparing entered text and displayed text with the help of split() and array
+		  const arrayquote = displayquote.querySelectorAll('span')
+		  const arrayinput = enteredtext.value.split('')
+	
+		  let correct = true
+	
+		  characterTyped++;
+		 
+		  errors = 0;
+	
+		  arrayquote.forEach((characterspan, index) => {
+			const character = arrayinput[index]
+	
+			// condition for showing color of text and adding color class of css to correct and incorrect text
+	
+			if (character == null) {
+			  characterspan.classList.remove('correct')
+			  characterspan.classList.remove('incorrect')
+			  correct = false
+			}
+	
+			else if (character === characterspan.innerText) {
+			  characterspan.classList.add('correct')
+			  characterspan.classList.remove('incorrect')
+			}
+			else {
+			  characterspan.classList.remove('correct')
+			  characterspan.classList.add('incorrect')
+	
+			  correct = true
+			  errors++;
+	
+	
+			}
+			// calculating accuracy
+	
+			let correctCharacters = (characterTyped - (total_errors + errors));
+			let accuracyVal = ((correctCharacters / characterTyped) * 100);
+			document.getElementById('wpm_show').innerHTML = Math.round(accuracyVal)
+	
+		  })
+	
+		  if (correct) {
+			getnextquote()
+			total_errors += errors;
+		  }
+		  document.getElementById('incorrect').innerText = errors
+		  let correctwords = (characterTyped - (errors));
+		  document.getElementById('correct').innerText = correctwords
+	
+		})
+	
+		function result() {
+		  var minute_count = document.getElementById('inputminute').value
+		  cpm = Math.round(((characterTyped / timeElapsed) * 60));
+		  wpm = Math.round((((characterTyped / 5) / timeElapsed) * 60));
+		  document.getElementById('wpm').innerHTML = wpm
+		  document.getElementById('cpm').innerHTML = cpm
+	
+		}
+	
+	
+		// function for displaying content field from api
+	
+		function getrandomquote() {
+		  return fetch(api_URL)
+			.then(response => response.json())
+			.then(data => data.content)
+	
+		}
+	
+		async function getnextquote() {
+		  const quote = await getrandomquote()
+	
+	
+		  // code for passing content shown to a span character to compare with input text
+		  displayquote.innerHTML = " "
+		  quote.split('').forEach(character => {
+			const characterspan = document.createElement('span')
+			characterspan.innerText = character
+			displayquote.appendChild(characterspan)
+	
+		  });
+		  enteredtext.value = null
+	
+		} getnextquote()
+	
+		input.addEventListener("click", function () {
+	
+		  // timer code
+		  var minute = document.getElementById('inputminute').value
+		  var counter = minute * 60;
+	
+	
+		  setInterval(function () {
+			counter--;
+			timeElapsed++;
+	
+			if (counter >= 0) {
+			  id = document.getElementById('time');
+			  id.innerHTML = counter;
+			}
+			if (counter === 0) {
+	
+			  result()
+			  $('#staticBackdrop').modal('show');
+			}
+		  }, 1000)
+	
+		}, { once: true });
+	
+		function reloadpage() {
+		  window.location.reload();
+		}
+		// side bar function
+		$(document).ready(function () {
+	
+		  $('#sidebarCollapse').on('click', function () {
+			$('#sidebar').toggleClass('active');
+		  });
+	
+		});
+	
+	
+	
+	  </script>
+</body>
+
+</html>
